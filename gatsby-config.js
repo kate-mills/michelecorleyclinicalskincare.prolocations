@@ -12,7 +12,7 @@ module.exports = {
     title: `Michele Corley Retail Locations`,
     description: `Find Michele Corley Clinical Skin Care products at these professional locations.`,
     author: `@kate-mills`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    siteUrl: `https://mcclocations.netlify.app/`,
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -36,7 +36,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/mcc-icon.png`, // This path is relative to the root of the site.
       },
     },
   ],
