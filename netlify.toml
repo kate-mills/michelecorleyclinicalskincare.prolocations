@@ -4,3 +4,8 @@
 [[edge_functions]]
   path = "/geolocation"
   function = "geolocation"
+
+[[redirects]]
+  from = '/api/*'
+  to = '/.netlify/functions/:splat'
+  status = 200

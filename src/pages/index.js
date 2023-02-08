@@ -3,28 +3,17 @@ import * as React from "react"
 //import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
+import Airtable from '../components/Airtable'
 import Seo from "../components/seo"
-import * as styles from "../components/index.module.css"
 
-const IndexPage = () => (
-  <Layout>
-    <div className={styles.textCenter}>
-      <h1>Michele Corley Clinical Skin Care Retailers</h1>
-      <p className={styles.intro}>
-        Find our products at these professional locations
-      </p>
-      <button onClick={e => console.log("click")} className="btn">
-        Click
-      </button>
-    </div>
-  </Layout>
-)
+const IndexPage = () => {
+  return (
+    <Layout>
+    <Airtable/>
+    </Layout>
+  )
+}
 
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
 export const Head = () => <Seo title="Home" />
 
 export default IndexPage

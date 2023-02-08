@@ -15,6 +15,14 @@ module.exports = {
     siteUrl: `https://mcclocations.netlify.app/`,
   },
   plugins: [
+    {
+      resolve: "@chakra-ui/gatsby-plugin",
+      options: {
+        isResettingCSS: true,
+        isUsingColorMode: true,
+        isBaseProvider: true,
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
