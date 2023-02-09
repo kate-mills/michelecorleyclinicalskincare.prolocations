@@ -1,11 +1,13 @@
 import * as React from "react"
-import { Flex, Box, Text } from "@chakra-ui/react"
+import { Text } from "@chakra-ui/react"
 
 const Layout = ({ children }) => {
   return(
     <>
+    <div style={{padding: '2%', width: '100vw'}}>
     <Text fontSize="6xl" color="primary">MC Retail Locations</Text>
-    <Box>{children}</Box>
+    <main>{children}</main>
+    </div>
     </>
   )
 }

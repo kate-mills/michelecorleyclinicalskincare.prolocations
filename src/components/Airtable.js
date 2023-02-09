@@ -22,7 +22,6 @@ const Airtable = () => {
     try {
       const { data } = await axios.get(url)
       setSpas(data)
-      console.log(data)
     } catch (err) {
       console.log(err)
     }
