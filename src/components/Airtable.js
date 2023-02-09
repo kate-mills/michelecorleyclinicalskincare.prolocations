@@ -1,13 +1,6 @@
 import * as React from "react"
 
-import axios from "axios"
-
-import {
-  Text,
-  Heading,
-  WrapItem,
-  Center
-} from "@chakra-ui/react"
+import { Text, Heading, WrapItem, Center } from "@chakra-ui/react"
 
 const url = "/api/airtablereduce"
 
@@ -17,15 +10,14 @@ const Airtable = () => {
     "Michele Coley Retailers Near You"
   )
 
-  const fetchData = async () => {
-    setMainTitle("Loading...")
-    try {
-      const { data } = await axios.get(url)
-      setSpas(data)
-    } catch (err) {
-      console.log(err)
-    }
-    setMainTitle(`Find Our Products At These Professional Locations`)
+  const fetchData = () => {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        setSpas(data)
+        setMainTitle(`Find Our Products At These Professional Locations`)
+        console.log(data)
+      })
   }
 
   React.useEffect(() => {
@@ -35,22 +27,22 @@ const Airtable = () => {
   return (
     <>
       <Text>{mainTitle}</Text>
-        {spas.map(spa => {
-          const { id, name, phone, city, state } = spa
-          return (
-            <WrapItem key={id}>
+      {spas.map(spa => {
+        const { id, name, phone, city, state } = spa
+        return (
+          <WrapItem key={id}>
             <Center>
-                <Heading fontSize="xs">{name}</Heading>
-                    <Text pt="2" fontSize="sm">
-                      {phone}
-                    </Text>
-                    <Text>
-                      {city}, {state}
-                    </Text>
+              <Heading fontSize="xs">{name}</Heading>
+              <Text pt="2" fontSize="sm">
+                {phone}
+              </Text>
+              <Text>
+                {city}, {state}
+              </Text>
             </Center>
-            </WrapItem>
-          )
-        })}
+          </WrapItem>
+        )
+      })}
     </>
   )
 }
