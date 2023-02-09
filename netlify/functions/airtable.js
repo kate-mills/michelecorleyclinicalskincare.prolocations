@@ -1,14 +1,15 @@
+require('dotenv').config()
 const Airtable = require("airtable-node")
 
-const API_KEY = process.env.AIRTABLE_API
-const BASE_ID = process.env.AIRTABLE_BASE_ID
-const TABLE_ID = process.env.AIRTABLE_TABLE_ID
+const API_KEY = process.env.GATSBY_AIRTABLE_API
+const BASE_ID = process.env.GATSBY_AIRTABLE_BASE_ID
+const TABLE_ID = process.env.GATSBY_AIRTABLE_TABLE_ID
 
 const airtable = new Airtable({ apiKey: API_KEY })
   .base(BASE_ID)
   .table("Spas")
 
-exports.handler = async (event, context, cb) => {
+exports.handler = async function (event, context) {
   //const { headers } = event
   //let userGeo = JSON.parse(headers["x-nf-geo"])
   //let userCity = userGeo?.city
