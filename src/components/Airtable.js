@@ -4,7 +4,7 @@ import axios from "axios"
 
 import { Text, Heading, WrapItem, Center } from "@chakra-ui/react"
 
-const url = "/api/airtable"
+const url = "/.netlify/functions/airtable"
 
 const Airtable = () => {
   const [spas, setSpas] = useState([])
