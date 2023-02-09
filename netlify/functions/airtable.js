@@ -9,10 +9,10 @@ const airtable = new Airtable({ apiKey: API_KEY })
   .table("Spas")
 
 exports.handler = async (event, context, cb) => {
-  const { headers } = event
-  let userGeo = JSON.parse(headers["x-nf-geo"])
-  let userCity = userGeo?.city
-  let userState = userGeo?.subdivision?.code
+  //const { headers } = event
+  //let userGeo = JSON.parse(headers["x-nf-geo"])
+  //let userCity = userGeo?.city
+  //let userState = userGeo?.subdivision?.code
 
   try {
     const { records } = await airtable.list()

@@ -2,7 +2,7 @@ import * as React from "react"
 
 import { Text, Heading, WrapItem, Center } from "@chakra-ui/react"
 
-const url = "/api/airtablereduce"
+const url = "/api/airtable"
 
 const Airtable = () => {
   const [spas, setSpas] = React.useState([])
