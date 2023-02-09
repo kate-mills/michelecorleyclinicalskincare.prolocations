@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config()
 const Airtable = require("airtable-node")
 
 const API_KEY = process.env.GATSBY_AIRTABLE_API
@@ -9,6 +9,7 @@ const airtable = new Airtable({ apiKey: API_KEY }).base(BASE_ID).table("Spas")
 
 exports.handler = async (event, context, cb) => {
   const { headers } = event
+  console.log('event', event)
   let userGeo = {}
   if (headers["x-nf-geo"]) {
     let geoJSON = JSON.parse(headers["x-nf-geo"])
