@@ -9,7 +9,7 @@ const airtable = new Airtable({ apiKey: API_KEY })
   .base(BASE_ID)
   .table("Spas")
 
-exports.handler = async function (event, context) {
+exports.handler = async (event, context) => {
   //const { headers } = event
   //let userGeo = JSON.parse(headers["x-nf-geo"])
   //let userCity = userGeo?.city
