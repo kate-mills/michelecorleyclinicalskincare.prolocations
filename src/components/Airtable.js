@@ -10,19 +10,20 @@ const AIRTABLE_URL = "/.netlify/functions/airtable"
 const Airtable = () => {
   const [spas, setSpas] = useState([])
   const [geoInfo, setGeoInfo] = useState(null)
-  const [userState, setUserState] = useState('')
-  const [userCity, setUserCity] = useState('')
+  const [userState, setUserState] = useState("")
+  const [userCity, setUserCity] = useState("")
 
   const [mainTitle, setMainTitle] = useState("Michele Coley Retailers Near You")
 
-  const fetchGeoData = async ()=>{
-    try{
-      const {data:{geo}} = await axios.get(GEO_LOCATION_URL)
+  const fetchGeoData = async () => {
+    try {
+      const {
+        data: { geo },
+      } = await axios.get(GEO_LOCATION_URL)
       setGeoInfo(geo)
       setUserState(geo?.subdivision?.code)
       setUserCity(geo?.city)
-      console.log('*************', geo)
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
   }
@@ -35,19 +36,23 @@ const Airtable = () => {
     } catch (err) {
       console.log(err)
     }
-    if(userCity && userState){
-      setMainTitle(`Find Our Products At These Professional Locations Near ${userCity}, ${userState}`)
+    if (userCity && userState) {
+      setMainTitle(
+        `Find Our Products At These Professional Locations Near ${userCity}, ${userState}`
+      )
+    } else {
+      setMainTitle(`Find Our Products At These Professional Locations.`)
     }
     console.log(spas)
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchGeoData()
   }, [])
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [userState])
 
   return (
     <>
