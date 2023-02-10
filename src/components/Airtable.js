@@ -4,23 +4,46 @@ import axios from "axios"
 
 import { Text, Heading, WrapItem, Center } from "@chakra-ui/react"
 
-const url = "/.netlify/functions/airtable"
+const GEO_LOCATION_URL = "/geolocation"
+const AIRTABLE_URL = "/.netlify/functions/airtable"
 
 const Airtable = () => {
   const [spas, setSpas] = useState([])
+  const [geoInfo, setGeoInfo] = useState(null)
+  const [userState, setUserState] = useState('')
+  const [userCity, setUserCity] = useState('')
+
   const [mainTitle, setMainTitle] = useState("Michele Coley Retailers Near You")
+
+  const fetchGeoData = async ()=>{
+    try{
+      const {data:{geo}} = await axios.get(GEO_LOCATION_URL)
+      setGeoInfo(geo)
+      setUserState(geo?.subdivision?.code)
+      setUserCity(geo?.city)
+      console.log('*************', geo)
+    }catch(err){
+      console.log(err)
+    }
+  }
 
   const fetchData = async () => {
     setMainTitle(`Loading...`)
     try {
-      const { data } = await axios.get(url)
+      const { data } = await axios.get(AIRTABLE_URL)
       setSpas(data)
     } catch (err) {
       console.log(err)
     }
-    setMainTitle(`Find Our Products At These Professional Locations`)
+    if(userCity && userState){
+      setMainTitle(`Find Our Products At These Professional Locations Near ${userCity}, ${userState}`)
+    }
     console.log(spas)
   }
+
+  useEffect(()=>{
+    fetchGeoData()
+  }, [])
 
   useEffect(() => {
     fetchData()
